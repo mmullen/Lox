@@ -1,0 +1,24 @@
+plugins {
+    id 'java'
+    id "application"
+}
+
+repositories {
+    mavenCentral()
+}
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src']
+        }
+    }
+}
+dependencies {
+    implementation 'junit:junit:4.12'
+}
+
+// ./gradlew run --args='tst/test.lox'
+// for testing
+application {
+    mainClass.set("com.craftinginterpreters.lox.Lox")
+}
