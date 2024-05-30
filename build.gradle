@@ -22,3 +22,15 @@ dependencies {
 application {
     mainClass.set("com.craftinginterpreters.lox.Lox")
 }
+
+// ./gradlew generateast
+task(generateast, dependsOn: 'classes', type: JavaExec) {
+    mainClass = 'com.craftinginterpreters.tool.GenerateAst'
+    classpath = sourceSets.main.runtimeClasspath
+    args 'src/com/craftinginterpreters/lox'
+}
+
+task(printast, dependsOn: 'classes', type: JavaExec) {
+    mainClass = 'com.craftinginterpreters.lox.AstPrinter'
+    classpath = sourceSets.main.runtimeClasspath
+}
