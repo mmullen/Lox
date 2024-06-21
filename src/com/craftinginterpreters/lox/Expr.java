@@ -2,6 +2,17 @@ package com.craftinginterpreters.lox;
 
 import java.util.List;
 
+/**
+ * Some terminology notes:
+ * - Terminal: A letter from the grammar's alphabet. A literal value, for us. Terminals are individual lexemes for us. `if` or `1234`
+ *   (think 'end' - once you hit them, no more parsing)
+ * - NonTerminal: Named reference to another rule. "Play that rule and insert the result here".
+ * - Derivations: Strings generated as a result of rules in the grammar
+ * - Productions: AKA Rules. They produce strings in the grammar
+ * - Precedence determines which operator is evaluated first in an expression containing a mixture of different operators. Higher precedence goes first.
+ * - Associativity determines which operator is evaluated first in a series of the same operator. When an operator is left-associative (think “left-to-right”), operators on the left evaluate before those on the right.
+ */
+
 abstract class Expr {
   interface Visitor<R> {
     R visitBinaryExpr(Binary expr);
