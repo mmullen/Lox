@@ -26,6 +26,7 @@ class Parser {
     }
 
     private Expr equality() {
+        // We always dive deeper because otherwise we would get stuck continauly matching our own precedence level
         Expr expr = comparison();
 
         while (match(BANG_EQUAL, EQUAL_EQUAL)) {

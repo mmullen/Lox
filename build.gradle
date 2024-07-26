@@ -23,6 +23,12 @@ application {
     mainClass.set("com.craftinginterpreters.lox.Lox")
 }
 
+task(repl, dependsOn: 'classes', type: JavaExec) {
+    standardInput = System.in
+    mainClass = 'com.craftinginterpreters.lox.Lox'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
 // ./gradlew generateast
 task(generateast, dependsOn: 'classes', type: JavaExec) {
     mainClass = 'com.craftinginterpreters.tool.GenerateAst'
