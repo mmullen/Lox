@@ -1,11 +1,14 @@
 package com.craftinginterpreters.lox;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 class Environment {
     final Environment enclosing;
     private final Map<String, Object> values = new HashMap<>();
+    private final Set<String> names = new HashSet<>();
 
     Environment() {
         enclosing = null;
@@ -42,6 +45,18 @@ class Environment {
     }
 
     void define(String name, Object value) {
+        values.put(name, value);
+    }
+
+    void declare(String name) {
+        names.add(name);
+    }
+
+    void set(String name, Object value) {
+        if (names.contains(name)) {
+            //bad
+        }
+
         values.put(name, value);
     }
 }
